@@ -5,7 +5,10 @@ import copy
 from scrapy.http import HtmlResponse
 from spiderxc.items import MovieItem
 import re
-
+headers = {
+    "user-agent": "PostmanRuntime-ApipostRuntime/1.1.0",
+    "cookie": "HWWAFSESID=2ef2f82b77755f1952; HWWAFSESTIME=1690891033939; Hm_lvt_4db2fa2cefb4c0914ae3c49355a1389d=1690527694,1690891037; Hm_lpvt_4db2fa2cefb4c0914ae3c49355a1389d=1690891037",
+}
 class HlbeSpider(scrapy.Spider):
     name = "hlbe"
     allowed_domains = ["nmj.hlbe.gov.cn"]
@@ -33,6 +36,7 @@ class HlbeSpider(scrapy.Spider):
             movie_item['update_at'] = list_item.xpath('./span/text()').get()
             movie_item['title'] = list_item.xpath('./a/text()').get()
             detail_url = movie_item['url']
+            print(movie_item)
             yield Request(url=detail_url, callback=self.parse_detail, cb_kwargs={'item': movie_item})
 
     def parse_detail(self, response, **kwargs):
