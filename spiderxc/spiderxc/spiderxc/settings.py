@@ -55,6 +55,7 @@ CONCURRENT_REQUESTS = 32
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
    "spiderxc.middlewares.SpiderxcSpiderMiddleware": 543,
+    "spiderxc.cookies_middleware.CookieMiddleware": 543,
 }
 
 # Enable or disable downloader middlewares
