@@ -7,7 +7,7 @@ from scrapy.http import HtmlResponse
 from spiderxc.items import MovieItem
 import re
 import string
-class OrdosSpider(scrapy.Spider):
+class BynrSpider(scrapy.Spider):
     name = "bynr"
     allowed_domains = ["nmj.bynr.gov.cn"]
 

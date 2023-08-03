@@ -10,7 +10,7 @@ import re
 #     "user-agent": "PostmanRuntime-ApipostRuntime/1.1.0",
 #     "cookie": "COLLCK=514720654; JSESSIONID=AEDA13D7B1CC85AAFF4FB98763A1680D; TS0171726e=01dde16a1e0e599768b314b7ba67a94b5fc3972fb4d58b67dea0d38a0c1373a3245c9a1de61b5e6f01e3e135cab7d9e5643caaa941; _trs_uv=l9soc0sj_5296_k73l; _trs_ua_s_1=lkrphd3n_5305_74xk; TS01708977=01dde16a1e2c0a040f92c0ee075a8b0c62cfda5af4c696a7e2b5633ce8a739b1df58ccc725bc3e30f0a2a0e5f9089f0270b9a44239",
 # }
-class HuhhotSpider(scrapy.Spider):
+class XamSpider(scrapy.Spider):
     name = "xam"
     allowed_domains = ["nmj.xam.gov.cn"]
 

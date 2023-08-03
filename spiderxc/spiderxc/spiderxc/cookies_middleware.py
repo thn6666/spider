@@ -6,4 +6,6 @@ class CookieMiddleware:
             request.headers['Cookie'] = 'chifeng_cookie=value1'
         elif spider.name == 'wuhai':
             request.headers['Cookie'] = 'wuhai_cookie=value2'
+        elif spider.name == 'als':
+            request.headers['Cookie'] = 'als_cookie=value3'
         # 还可以根据请求的URL等其他条件设置不同的Cookie
