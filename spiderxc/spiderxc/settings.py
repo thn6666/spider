@@ -32,7 +32,7 @@ CONCURRENT_REQUESTS = 32
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 1
+# DOWNLOAD_DELAY = 3
 # RANDOMIZE_DOWNLOAD_DELAY = True
 
 # The download delay setting will honor only one of:
@@ -55,6 +55,7 @@ CONCURRENT_REQUESTS = 32
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 SPIDER_MIDDLEWARES = {
    "spiderxc.middlewares.SpiderxcSpiderMiddleware": 543,
+    "spiderxc.cookies_middleware.CookieMiddleware": 543,
 }
 
 # Enable or disable downloader middlewares

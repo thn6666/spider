@@ -8,9 +8,9 @@ class BaotouSpider(scrapy.Spider):
     allowed_domains = ["nmj.baotou.gov.cn"]
 
     def start_requests(self):
-        keywords = ['zwdt','qxdt']
+        keywords = ['zwdt','qxdt','tzgg']
         for key in keywords:
-            for page in range(1,10):
+            for page in range(1,324):
                 url = f'http://nmj.baotou.gov.cn/{key}_{page}.jhtml'
                 yield scrapy.Request(url=url)
 
@@ -32,9 +32,18 @@ class BaotouSpider(scrapy.Spider):
     def parse_detail(self, response, **kwargs):
         sel = Selector(response)
         movie_item = copy.deepcopy(kwargs['item'])
-        list_items = response.xpath('//*[@id="content_body"]')
-        for list_item in list_items:
-            data = list_item.xpath('./div[2]//text()').getall()
-            cleaned_data = ''.join([text.replace('\u3000', '').replace('\n', '').replace('\xa0', '').strip() for text in data])
-            movie_item['data'] = cleaned_data
-            yield movie_item
+        if 'tzgg' in response.url:
+            list_items = response.xpath('//*[@class="wenzhang"]')
+            for list_item in list_items:
+                data = list_item.xpath('.//text()').getall()
+                cleaned_data = ''.join(
+                    [text.replace('\u3000', '').replace('\n', '').replace('\xa0', '').strip() for text in data])
+                movie_item['data'] = cleaned_data
+                yield movie_item
+        else:
+            list_items = response.xpath('//*[@id="content_body"]')
+            for list_item in list_items:
+                data = list_item.xpath('./div[2]//text()').getall()
+                cleaned_data = ''.join([text.replace('\u3000', '').replace('\n', '').replace('\xa0', '').strip() for text in data])
+                movie_item['data'] = cleaned_data
+                yield movie_item

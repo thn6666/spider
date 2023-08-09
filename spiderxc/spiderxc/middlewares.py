@@ -8,14 +8,14 @@ from spiderxc.settings import USER_AGENTS
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 
-def get_cookies_dict():
-    cookies_str = 'JSESSIONID=EB4131126C9A9A1492BB36A9EF73C4B0; TS0171726e=01dde16a1e65da48985de9b6e07f0a47e67485e43eaf2f31338faeaa0f0c50ec72b0df05103415e7b5d9e86d0dcc487fd4ff639e98; _trs_uv=l9soc0sj_5296_k73l; _trs_ua_s_1=lke9yn5o_5305_1rob; TS01708977=01dde16a1e75b5f3e6afaa2d97b0d7a15f419accabe2df018175865df0a096a10dc077a1a5591629a4371b499a6bf022ea1583e7dd'
-    cookies_dict = {}
-    for item in cookies_str.split('; '):
-        key, value = item.split('=', maxsplit=1)
-        cookies_dict[key] = value
-        return cookies_dict
-COOKIES_DICT = get_cookies_dict()
+# def get_cookies_dict():
+#     cookies_str = 'COLLCK=514720654; JSESSIONID=AEDA13D7B1CC85AAFF4FB98763A1680D; TS0171726e=01dde16a1e0e599768b314b7ba67a94b5fc3972fb4d58b67dea0d38a0c1373a3245c9a1de61b5e6f01e3e135cab7d9e5643caaa941; _trs_uv=l9soc0sj_5296_k73l; _trs_ua_s_1=lkrphd3n_5305_74xk; TS01708977=01dde16a1e0e599768b314b7ba67a94b5fc3972fb4d58b67dea0d38a0c1373a3245c9a1de61b5e6f01e3e135cab7d9e5643caaa941'
+#     cookies_dict = {}
+#     for item in cookies_str.split('; '):
+#         key, value = item.split('=', maxsplit=1)
+#         cookies_dict[key] = value
+#         return cookies_dict
+# COOKIES_DICT = get_cookies_dict()
 class SpiderxcSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
@@ -97,7 +97,7 @@ class SpiderxcDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
-        request.cookies = COOKIES_DICT
+        # request.cookies = COOKIES_DICT
         return response
 
     def process_exception(self, request, exception, spider):
